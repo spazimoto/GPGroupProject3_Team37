@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -6,8 +8,10 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private Transform debugHitPointTransform;
     [SerializeField] private Transform hookshotTransform;
 
-    [SerializeField] private float speed;
-    [SerializeField] private float gravity;
+    [SerializeField] private float speed, gravity;
+
+    public float knockbackForce, knockbackTime;
+    private float knockbackCounter;
 
     private CameraController cameraFOV;
     private float cameraVertAngle;
@@ -19,8 +23,6 @@ public class PlayerScript : MonoBehaviour
     private float playerVelocityY;
     private Vector3 playerVelocityMomentum;
 
-    public Transform head;
-
     public Transform camera;
     public CharacterController controller;
     public CameraShake camShake;
@@ -29,7 +31,20 @@ public class PlayerScript : MonoBehaviour
     private Vector3 hookshotPosition;
     private float hookshotSize;
 
-    private bool heavyMass;
+    public bool lightMass, normalMass, heavyMass;
+
+    private bool inWindArea;
+
+    [SerializeField] private float cooldownTime = 3f;
+    private float nextMassChange = 0f;
+
+    public Animator anim;
+
+    public Text interactText;
+    public Text winText;
+
+    public GameObject turbineWind;
+    public Transform turbine;
 
     private enum State
     {
@@ -40,7 +55,6 @@ public class PlayerScript : MonoBehaviour
 
     private void Awake()
     {
-        Cursor.lockState = CursorLockMode.Locked;
         state = State.Normal;
 
         cameraFOV = camera.GetComponent<CameraController>();
@@ -50,10 +64,14 @@ public class PlayerScript : MonoBehaviour
 
     private void Start()
     {
-        speed = 20f;
-        gravity = -60f;
+        speed = 50f;
+        gravity = -100f;
 
+        lightMass = false;
+        normalMass = true;
         heavyMass = false;
+        interactText.gameObject.SetActive(false);
+        winText.gameObject.SetActive(false);
     }
 
     void Update()
@@ -78,6 +96,7 @@ public class PlayerScript : MonoBehaviour
         }
 
         ChangeMass();
+        AnimationControl();
     }
 
     void MouseLook()
@@ -85,16 +104,17 @@ public class PlayerScript : MonoBehaviour
         float lookX = Input.GetAxisRaw("Mouse X");
         float lookY = Input.GetAxisRaw("Mouse Y");
 
-        transform.Rotate(new Vector3(0f, lookX * mouseSensitivity, 0f), Space.Self);
+        if(!PauseMenu.gamePaused)
+        {
+            transform.Rotate(new Vector3(0f, lookX * mouseSensitivity, 0f), Space.Self);
 
-        head.transform.Rotate(new Vector3(lookY * mouseSensitivity, 0f, 0f));
+            cameraVertAngle -= lookY * mouseSensitivity;
+            cameraHorAngle -= lookX * mouseSensitivity;
 
-        cameraVertAngle -= lookY * mouseSensitivity;
-        cameraHorAngle -= lookX * mouseSensitivity;
+            cameraVertAngle = Mathf.Clamp(cameraVertAngle, -89f, 89f);
 
-        cameraVertAngle = Mathf.Clamp(cameraVertAngle, -89f, 89f);
-
-        camera.transform.localEulerAngles = new Vector3(cameraVertAngle, 0, 0);
+            camera.transform.localEulerAngles = new Vector3(cameraVertAngle, 0, 0);
+        }
     }
 
     void PlayerMovement()
@@ -110,13 +130,8 @@ public class PlayerScript : MonoBehaviour
 
             if (JumpInput())
             {
-                float jumpSpeed = 30f;
+                float jumpSpeed = 45f;
                 playerVelocityY = jumpSpeed;
-
-                /*if (heavyMass = true && controller.isGrounded)
-                {
-                    StartCoroutine(camShake.Shake(.10f, .2f));
-                }*/ // heavy player camera shake, still needs polishing. currently if player switches to other modes after this camerashake is still enabled. add bool?
             }
         }
 
@@ -128,6 +143,7 @@ public class PlayerScript : MonoBehaviour
         playerVelocity += playerVelocityMomentum;
 
         controller.Move(playerVelocity * Time.deltaTime);
+
 
          //dampens momentum
         if (playerVelocityMomentum.magnitude >= 0f)
@@ -142,28 +158,114 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter(Collider collider)
+    {
+        if(collider.gameObject.CompareTag("Damage"))
+        {
+            print("Yowch!");
+            Knockback();
+        }
+    }
+
+    void OnTriggerStay(Collider collider)
+    {
+        int flipswitch = 0;
+        GameObject switchTrigger = collider.gameObject;
+
+        if(collider.gameObject.CompareTag("Interact"))
+        {
+            interactText.gameObject.SetActive(true);
+
+            if(Input.GetButtonDown("Interact"))
+            {
+                if(flipswitch == 0)
+                {
+                    print("flipping the switch");
+                    
+                    Destroy(switchTrigger);
+                    Instantiate(turbineWind, turbine.position, turbine.rotation);
+                    flipswitch = 1;
+
+                    interactText.gameObject.SetActive(false);
+                }
+                if (flipswitch == 1)
+                {
+                    Destroy(switchTrigger);
+                    turbineWind.gameObject.transform.localScale += new Vector3(10,30,10);
+                }
+            }
+        }
+
+        if (collider.gameObject.CompareTag("Sail"))
+        {
+            interactText.gameObject.SetActive(true);
+
+            if (Input.GetButtonDown("Interact"))
+            {
+                interactText.gameObject.SetActive(false);
+                winText.gameObject.SetActive(true);
+                Invoke("WinPlaceholder", 3.0f);
+            }
+        }
+
+        if(collider.gameObject.CompareTag("Wind"))
+        {
+            WindArea windArea = collider.gameObject.GetComponent<WindArea>();
+            inWindArea = true;
+
+            if(!heavyMass)
+            {
+                print("Ahhh! I'm being blown away!");
+                controller.Move(windArea.direction.normalized * windArea.strength * Time.deltaTime);
+            }
+        }
+    }
+
+    void OnTriggerExit(Collider collider)
+    {
+        //print ("Phew! That was close!");
+        inWindArea = false;
+        interactText.gameObject.SetActive(false);
+    }
+
     void ChangeMass()
     {
-        if(Input.GetKeyDown(KeyCode.Keypad1))
+        if (Time.time > nextMassChange)
         {
-            print("Your mass is now set to light.");
-            speed = 40f;
-            gravity = -30f;
-        }
+            //print ("Your mass is now set to normal.");
+            normalMass = true;
 
-        if(Input.GetKeyDown(KeyCode.Keypad2))
-        {
-            print("Your mass is now set to normal.");
-            speed = 20f;
+            lightMass = false;
+            heavyMass = false;
+
+            speed = 50f;
             gravity = -60f;
-        }
 
-        if(Input.GetKeyDown(KeyCode.Keypad3))
-        {
-            bool heavyMass = true;
-            print("Your mass is now set to heavy.");
-            speed = 5f;
-            gravity = -90f;
+            if(Input.GetKeyDown(KeyCode.Q) || Input.GetButtonDown("Light"))
+            {
+                print("Your mass is now set to light.");
+                lightMass = true;
+
+                normalMass = false;
+                heavyMass = false;
+
+                speed = 70f;
+                gravity = -30f;
+
+                Cooldown();
+            }
+
+            if(Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Heavy"))
+            {
+                print("Your mass is now set to heavy.");
+                heavyMass = true;
+
+                lightMass = false;
+                normalMass = false;
+
+                speed = 15f; gravity = -90f;
+                Cooldown();
+            }
         }
     }
 
@@ -174,17 +276,20 @@ public class PlayerScript : MonoBehaviour
 
     void HandleHookshotStart()
     {
-        if (HookshotInput())
+        if (HookshotInput() || Input.GetAxis("Firehook") != 0)
         {
-            if (Physics.Raycast(camera.transform.position, camera.transform.forward, out RaycastHit raycastHit)) //origin, direction, returns a boolean if hit = true
-            {
-                debugHitPointTransform.position = raycastHit.point;
-                hookshotPosition = raycastHit.point;
-                hookshotSize = 0f;
-                hookshotTransform.gameObject.SetActive(true);
-                hookshotTransform.localScale = Vector3.zero;
-                state = State.HookshotThrown;
-            }
+                if (Physics.Raycast(camera.transform.position, camera.transform.forward, out RaycastHit raycastHit)) //origin, direction, returns a boolean if hit = true
+                {
+                    if(raycastHit.collider.tag == "Grapple")
+                    {
+                        debugHitPointTransform.position = raycastHit.point;
+                        hookshotPosition = raycastHit.point;
+                        hookshotSize = 0f;
+                        hookshotTransform.gameObject.SetActive(true);
+                        hookshotTransform.localScale = Vector3.zero;
+                        state = State.HookshotThrown;
+                    }
+                }
         }
     }
 
@@ -224,7 +329,7 @@ public class PlayerScript : MonoBehaviour
         }
 
         //Cancel hookshot
-        if (HookshotInput())
+        if (HookshotInput() || Input.GetAxis("Firehook") != 0)
         {
             CancelHookshot();
         }
@@ -255,6 +360,50 @@ public class PlayerScript : MonoBehaviour
 
     private bool JumpInput()
     {
-        return Input.GetKeyDown(KeyCode.Space);
+        return Input.GetButton("Jump");
+    }
+
+    void Cooldown()
+    {
+        nextMassChange = Time.time + cooldownTime;
+    }
+
+    public void Knockback()
+    {
+        knockbackCounter = knockbackTime;
+        Vector3 impactDirection = new Vector3(2f,1f,2f);
+
+        controller.Move(impactDirection * knockbackForce);
+        //transform.Translate(Vector3.back, Space.Self);
+    }
+
+    void AnimationControl()
+    {
+        if(!PauseMenu.gamePaused)
+        {
+            if(Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
+            {
+                anim.SetBool("isWalking", true);
+            }
+            else
+            {
+                anim.SetBool("isWalking", false);
+            }
+            
+            if(JumpInput())
+            {
+                anim.SetBool("isWalking", false);
+                anim.SetBool("isJumping", true);
+            }
+            else
+            {
+                anim.SetBool("isJumping", false);
+            }
+        }
+    }
+
+    void WinPlaceholder()
+    {
+        SceneManager.LoadScene("WinPlaceholder");
     }
 }

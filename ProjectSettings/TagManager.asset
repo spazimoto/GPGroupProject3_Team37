@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Grapple
   - Wind
+  - Damage
+  - Hook
+  - Interact
+  - Sail
   layers:
   - Default
   - TransparentFX
@@ -17,8 +21,8 @@ TagManager:
   - 
   - Ground
   - Grapple
-  - 
-  - 
+  - Hook
+  - InteractTrigger
   - 
   - 
   - 

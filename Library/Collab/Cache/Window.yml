@@ -14,22 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SimpleSelectedItems:
     m_Keys:
-    - Assets/Prefabs/DestructiblePlatform 1.prefab
-    - Assets/Prefabs/DestructiblePlatform 1.prefab.meta
-    - Assets/Prefabs/DestructiblePlatform.prefab
-    - Assets/Prefabs/DestructiblePlatform.prefab.meta
-    - Assets/Scenes/Art Demo.unity
-    - Assets/Scenes/testscene.unity
-    - Assets/Scripts/Destructible.cs
-    - Assets/Scripts/Destructible.cs.meta
-    - Packages/manifest.json
-    - Packages/packages-lock.json
-    - ProjectSettings/EditorBuildSettings.asset
-    - ProjectSettings/InputManager.asset
-    - ProjectSettings/ProjectSettings.asset
-    - ProjectSettings/UnityConnectSettings.asset
+    - Assets/Scripts/PlayerScript.cs
     - 
-    m_Values: 000000000000000000000000000000
+    m_Values: 0101
   RevisionSummary: 
   ChangesSearchValue: 
   SelectedHistoryRevision: 
