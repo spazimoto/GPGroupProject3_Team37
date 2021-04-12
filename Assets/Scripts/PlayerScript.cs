@@ -35,16 +35,31 @@ public class PlayerScript : MonoBehaviour
 
     private bool inWindArea;
 
-    [SerializeField] private float cooldownTime = 3f;
+    [SerializeField] private float cooldownTime = 20f;
     private float nextMassChange = 0f;
 
     public Animator anim;
 
-    public Text interactText;
-    public Text winText;
+    Animation animation;
 
     public GameObject turbineWind;
     public Transform turbine;
+
+    AudioSource SFX;
+    public AudioClip jumping;
+    public AudioClip shootHook;
+
+    public GameObject crosshair;
+
+    public static bool gotWheel = false;
+    public static bool gotEngine = false;
+    public static bool gotSail = false;
+
+    public GameObject wheel;
+    public GameObject sail;
+    public GameObject engine;
+    
+    // this is where my public static gameobjects would go...IF I HAD ANY!!
 
     private enum State
     {
@@ -59,6 +74,8 @@ public class PlayerScript : MonoBehaviour
 
         cameraFOV = camera.GetComponent<CameraController>();
 
+        SFX = gameObject.GetComponent<AudioSource>();
+
         hookshotTransform.gameObject.SetActive(false);
     }
 
@@ -70,12 +87,19 @@ public class PlayerScript : MonoBehaviour
         lightMass = false;
         normalMass = true;
         heavyMass = false;
-        interactText.gameObject.SetActive(false);
-        winText.gameObject.SetActive(false);
+
+        anim.SetTrigger("isAlive");
+
+        ObjectiveClear();
     }
 
     void Update()
     {
+        if (gotWheel && gotEngine && gotSail)
+        {
+            SceneManager.LoadScene("Win");
+        }
+
         switch(state)
         {
             default:
@@ -89,7 +113,7 @@ public class PlayerScript : MonoBehaviour
                 MouseLook();
                 PlayerMovement();
                 break;
-            case State.HookshotPull: // good as is, don't need to adjust it at all? if the player is too heavy, have the ui throw an error saying that it can't support weight
+            case State.HookshotPull:
                 HookshotMovement();
                 MouseLook();
                 break;
@@ -132,6 +156,7 @@ public class PlayerScript : MonoBehaviour
             {
                 float jumpSpeed = 45f;
                 playerVelocityY = jumpSpeed;
+                SFXControl(jumping);
             }
         }
 
@@ -165,49 +190,35 @@ public class PlayerScript : MonoBehaviour
             print("Yowch!");
             Knockback();
         }
+
+        if(collider.gameObject.CompareTag("Wheel"))
+        {
+            Destroy(collider.gameObject);
+            gotWheel = true;
+
+            SceneManager.LoadScene("Ezra's Market (Hub Level)");
+        }
+        
+        if(collider.gameObject.CompareTag("Sail"))
+        {
+            Destroy(collider.gameObject);
+            gotSail = true;
+
+            SceneManager.LoadScene("Ezra's Market (Hub Level)");
+        }
+
+        if(collider.gameObject.CompareTag("Engine"))
+        {
+            Destroy(collider.gameObject);
+            gotEngine = true;
+
+            SceneManager.LoadScene("Ezra's Market (Hub Level)");
+        }
+
     }
 
     void OnTriggerStay(Collider collider)
     {
-        int flipswitch = 0;
-        GameObject switchTrigger = collider.gameObject;
-
-        if(collider.gameObject.CompareTag("Interact"))
-        {
-            interactText.gameObject.SetActive(true);
-
-            if(Input.GetButtonDown("Interact"))
-            {
-                if(flipswitch == 0)
-                {
-                    print("flipping the switch");
-                    
-                    Destroy(switchTrigger);
-                    Instantiate(turbineWind, turbine.position, turbine.rotation);
-                    flipswitch = 1;
-
-                    interactText.gameObject.SetActive(false);
-                }
-                if (flipswitch == 1)
-                {
-                    Destroy(switchTrigger);
-                    turbineWind.gameObject.transform.localScale += new Vector3(10,30,10);
-                }
-            }
-        }
-
-        if (collider.gameObject.CompareTag("Sail"))
-        {
-            interactText.gameObject.SetActive(true);
-
-            if (Input.GetButtonDown("Interact"))
-            {
-                interactText.gameObject.SetActive(false);
-                winText.gameObject.SetActive(true);
-                Invoke("WinPlaceholder", 3.0f);
-            }
-        }
-
         if(collider.gameObject.CompareTag("Wind"))
         {
             WindArea windArea = collider.gameObject.GetComponent<WindArea>();
@@ -225,7 +236,6 @@ public class PlayerScript : MonoBehaviour
     {
         //print ("Phew! That was close!");
         inWindArea = false;
-        interactText.gameObject.SetActive(false);
     }
 
     void ChangeMass()
@@ -238,8 +248,8 @@ public class PlayerScript : MonoBehaviour
             lightMass = false;
             heavyMass = false;
 
-            speed = 50f;
-            gravity = -60f;
+            speed = 20f;
+            gravity = -100f;
 
             if(Input.GetKeyDown(KeyCode.Q) || Input.GetButtonDown("Light"))
             {
@@ -249,8 +259,8 @@ public class PlayerScript : MonoBehaviour
                 normalMass = false;
                 heavyMass = false;
 
-                speed = 70f;
-                gravity = -30f;
+                speed = 30f;
+                gravity = -60f;
 
                 Cooldown();
             }
@@ -263,7 +273,8 @@ public class PlayerScript : MonoBehaviour
                 lightMass = false;
                 normalMass = false;
 
-                speed = 15f; gravity = -90f;
+                speed = 10f; 
+                gravity = -120f;
                 Cooldown();
             }
         }
@@ -276,20 +287,27 @@ public class PlayerScript : MonoBehaviour
 
     void HandleHookshotStart()
     {
-        if (HookshotInput() || Input.GetAxis("Firehook") != 0)
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit raycastHit, 100)) //origin, direction, returns a boolean if hit = true
         {
-                if (Physics.Raycast(camera.transform.position, camera.transform.forward, out RaycastHit raycastHit)) //origin, direction, returns a boolean if hit = true
+            if(raycastHit.collider.tag == "Grapple")
+            {
+                crosshair.GetComponent<Image>().color = Color.red;
+                if (HookshotInput() || Input.GetAxis("Firehook") != 0)
                 {
-                    if(raycastHit.collider.tag == "Grapple")
-                    {
-                        debugHitPointTransform.position = raycastHit.point;
-                        hookshotPosition = raycastHit.point;
-                        hookshotSize = 0f;
-                        hookshotTransform.gameObject.SetActive(true);
-                        hookshotTransform.localScale = Vector3.zero;
-                        state = State.HookshotThrown;
-                    }
+                    debugHitPointTransform.position = raycastHit.point;
+                    hookshotPosition = raycastHit.point;
+                    hookshotSize = 0f;
+                    hookshotTransform.gameObject.SetActive(true);
+                    hookshotTransform.localScale = Vector3.zero;
+                    state = State.HookshotThrown;
                 }
+            }
+            
+        }
+        else
+        {
+            crosshair.GetComponent<Image>().color = Color.white;
         }
     }
 
@@ -305,6 +323,7 @@ public class PlayerScript : MonoBehaviour
         {
             state = State.HookshotPull;
             cameraFOV.SetCameraFOV(hookshotFOV);
+            SFXControl(shootHook);
         }
     }
 
@@ -341,6 +360,8 @@ public class PlayerScript : MonoBehaviour
 
             float jumpSpeed = 40f;
             playerVelocityMomentum += Vector3.up * jumpSpeed;
+
+            SFXControl(jumping);
             CancelHookshot();
         }
     }
@@ -384,26 +405,50 @@ public class PlayerScript : MonoBehaviour
             if(Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
             {
                 anim.SetBool("isWalking", true);
+                anim.SetBool("isAlive", false);
             }
             else
             {
                 anim.SetBool("isWalking", false);
             }
-            
-            if(JumpInput())
-            {
-                anim.SetBool("isWalking", false);
-                anim.SetBool("isJumping", true);
-            }
-            else
+
+            if (controller.isGrounded)
             {
                 anim.SetBool("isJumping", false);
+                print("I'm walking...on the GROUND!");
+            }
+            else
+            {
+                anim.SetBool("isJumping", true);
+                anim.SetBool("isWalking", false);
+                print("Whoa! Where's the ground?!");
             }
         }
+    }
+
+    public void SFXControl(AudioClip audio)
+    {
+        SFX.PlayOneShot(audio);
     }
 
     void WinPlaceholder()
     {
         SceneManager.LoadScene("WinPlaceholder");
+    }
+
+    void ObjectiveClear()
+    {
+        if(gotWheel)
+        {
+            Destroy(wheel);
+        }
+        if(gotEngine)
+        {
+            Destroy(engine);
+        }
+        if(gotSail)
+        {
+            Destroy(sail);
+        }
     }
 }

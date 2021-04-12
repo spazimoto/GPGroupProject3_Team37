@@ -1,0 +1,694 @@
+fileFormatVersion: 2
+guid: a8f527bd4dbf79048a10df8068bbe1b0
+ModelImporter:
+  serializedVersion: 20101
+  internalIDToNameTable:
+  - first:
+      74: 1827226128182048838
+    second: NewRun
+  externalObjects: {}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
+      human bone 'LeftUpperArm' not found\n"
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: NewRun
+      takeName: Take 001
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 24
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton:
+    - name: RunAnim(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Fullform_low
+      parentName: RunAnim(Clone)
+      position: {x: 0.0010466671, y: 0.65794486, z: -0.08714729}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scalp_Hair_low
+      parentName: Fullform_low
+      position: {x: -0.00042952813, y: 0.4242118, z: -0.008881011}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface96
+      parentName: Scalp_Hair_low
+      position: {x: 0.15557419, y: -1.2388706, z: -0.7183964}
+      rotation: {x: 0.23029271, y: 0.040011786, z: 0.09444145, w: 0.967701}
+      scale: {x: 1.0208781, y: 1.0208781, z: 1.0208781}
+    - name: polySurface94
+      parentName: Scalp_Hair_low
+      position: {x: -0.0747675, y: -1.2541214, z: -0.68661207}
+      rotation: {x: 0.22674161, y: 0.056779537, z: 0.023276653, w: 0.97201985}
+      scale: {x: 1.0159795, y: 1.0159795, z: 1.0159795}
+    - name: polySurface92
+      parentName: Scalp_Hair_low
+      position: {x: -0.109159715, y: -1.2373049, z: -0.667092}
+      rotation: {x: 0.22787818, y: -0.021395389, z: 0.0050085615, w: 0.97344166}
+      scale: {x: 1.0166392, y: 1.0166392, z: 1.0166392}
+    - name: polySurface90
+      parentName: Scalp_Hair_low
+      position: {x: -0.1464272, y: -1.2285444, z: -0.61908}
+      rotation: {x: 0.22787818, y: -0.021395389, z: 0.0050085615, w: 0.97344166}
+      scale: {x: 1.0208836, y: 1.0208836, z: 1.0208836}
+    - name: polySurface88
+      parentName: Scalp_Hair_low
+      position: {x: -0.16644518, y: -1.1930618, z: -0.59171146}
+      rotation: {x: 0.22787818, y: -0.021395389, z: 0.0050085615, w: 0.97344166}
+      scale: {x: 1.020407, y: 1.020407, z: 1.020407}
+    - name: polySurface86
+      parentName: Scalp_Hair_low
+      position: {x: -0.19748217, y: -1.2847421, z: -0.25031185}
+      rotation: {x: 0.088158965, y: -0.021888211, z: 0.0019376562, w: 0.99586403}
+      scale: {x: 1.0198425, y: 1.0198425, z: 1.0198425}
+    - name: polySurface84
+      parentName: Scalp_Hair_low
+      position: {x: -0.19353458, y: -1.2895184, z: 0.12156182}
+      rotation: {x: -0.028819548, y: -0.021964679, z: -0.0006334282, w: 0.9993431}
+      scale: {x: 1.0162385, y: 1.0162385, z: 1.0162385}
+    - name: polySurface82
+      parentName: Scalp_Hair_low
+      position: {x: -0.19367234, y: -1.2489986, z: 0.12738162}
+      rotation: {x: -0.028819548, y: -0.021964679, z: -0.0006334282, w: 0.9993431}
+      scale: {x: 1.0208633, y: 1.0208633, z: 1.0208633}
+    - name: polySurface80
+      parentName: Scalp_Hair_low
+      position: {x: -0.17397244, y: -1.2037512, z: 0.07135756}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1.016358, y: 1.016358, z: 1.016358}
+    - name: polySurface78
+      parentName: Scalp_Hair_low
+      position: {x: -0.14151971, y: -1.1681546, z: 0.077475354}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1.0193343, y: 1.0193343, z: 1.0193343}
+    - name: polySurface76
+      parentName: Scalp_Hair_low
+      position: {x: -0.10369827, y: -1.1363581, z: 0.0914166}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1.0176923, y: 1.0176923, z: 1.0176923}
+    - name: polySurface74
+      parentName: Scalp_Hair_low
+      position: {x: -0.054786056, y: -1.1196086, z: 0.090390354}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1.0227216, y: 1.0227216, z: 1.0227216}
+    - name: polySurface72
+      parentName: Scalp_Hair_low
+      position: {x: -0.00022528085, y: -1.1012692, z: 0.09641491}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1.0153507, y: 1.0153507, z: 1.0153507}
+    - name: polySurface45
+      parentName: Scalp_Hair_low
+      position: {x: -0.010513938, y: -1.3857257, z: -0.12300822}
+      rotation: {x: 0.23029271, y: 0.040011786, z: 0.09444145, w: 0.967701}
+      scale: {x: 1.0222192, y: 1.0222192, z: 1.0222192}
+    - name: polySurface73
+      parentName: Scalp_Hair_low
+      position: {x: -0.00022528085, y: -1.1012692, z: 0.09641491}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1.0153507, y: 1.0153507, z: 1.0153507}
+    - name: polySurface75
+      parentName: Scalp_Hair_low
+      position: {x: -0.054786056, y: -1.1196086, z: 0.090390354}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1.0227216, y: 1.0227216, z: 1.0227216}
+    - name: polySurface77
+      parentName: Scalp_Hair_low
+      position: {x: -0.10369827, y: -1.1363581, z: 0.0914166}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1.0176923, y: 1.0176923, z: 1.0176923}
+    - name: polySurface79
+      parentName: Scalp_Hair_low
+      position: {x: -0.14151971, y: -1.1681546, z: 0.077475354}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1.0193343, y: 1.0193343, z: 1.0193343}
+    - name: polySurface81
+      parentName: Scalp_Hair_low
+      position: {x: -0.17397244, y: -1.2037512, z: 0.07135756}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1.016358, y: 1.016358, z: 1.016358}
+    - name: polySurface83
+      parentName: Scalp_Hair_low
+      position: {x: -0.19367234, y: -1.2489986, z: 0.12738162}
+      rotation: {x: -0.028819548, y: -0.021964679, z: -0.0006334282, w: 0.9993431}
+      scale: {x: 1.0208633, y: 1.0208633, z: 1.0208633}
+    - name: polySurface85
+      parentName: Scalp_Hair_low
+      position: {x: -0.19353458, y: -1.2895184, z: 0.12156182}
+      rotation: {x: -0.028819548, y: -0.021964679, z: -0.0006334282, w: 0.9993431}
+      scale: {x: 1.0162385, y: 1.0162385, z: 1.0162385}
+    - name: polySurface87
+      parentName: Scalp_Hair_low
+      position: {x: -0.19748217, y: -1.2847421, z: -0.25031185}
+      rotation: {x: 0.088158965, y: -0.021888211, z: 0.0019376562, w: 0.99586403}
+      scale: {x: 1.0198425, y: 1.0198425, z: 1.0198425}
+    - name: polySurface89
+      parentName: Scalp_Hair_low
+      position: {x: -0.16644518, y: -1.1930618, z: -0.59171146}
+      rotation: {x: 0.22787818, y: -0.021395389, z: 0.0050085615, w: 0.97344166}
+      scale: {x: 1.020407, y: 1.020407, z: 1.020407}
+    - name: polySurface91
+      parentName: Scalp_Hair_low
+      position: {x: -0.1464272, y: -1.2285444, z: -0.61908}
+      rotation: {x: 0.22787818, y: -0.021395389, z: 0.0050085615, w: 0.97344166}
+      scale: {x: 1.0208836, y: 1.0208836, z: 1.0208836}
+    - name: polySurface93
+      parentName: Scalp_Hair_low
+      position: {x: -0.109159715, y: -1.2373049, z: -0.667092}
+      rotation: {x: 0.22787818, y: -0.021395389, z: 0.0050085615, w: 0.97344166}
+      scale: {x: 1.0166392, y: 1.0166392, z: 1.0166392}
+    - name: polySurface95
+      parentName: Scalp_Hair_low
+      position: {x: -0.0747675, y: -1.2541214, z: -0.68661207}
+      rotation: {x: 0.22674161, y: 0.056779537, z: 0.023276653, w: 0.97201985}
+      scale: {x: 1.0159795, y: 1.0159795, z: 1.0159795}
+    - name: polySurface97
+      parentName: Scalp_Hair_low
+      position: {x: 0.15557419, y: -1.2388706, z: -0.7183964}
+      rotation: {x: 0.23029271, y: 0.040011786, z: 0.09444145, w: 0.967701}
+      scale: {x: 1.0208781, y: 1.0208781, z: 1.0208781}
+    - name: Bun_retopo_low
+      parentName: Fullform_low
+      position: {x: -0.004647174, y: 0.54753286, z: -0.21145733}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface111
+      parentName: Bun_retopo_low
+      position: {x: 0.006667034, y: -1.2069561, z: 0.28615814}
+      rotation: {x: -0.008139842, y: 0.19460233, z: -0.70535994, w: 0.6815652}
+      scale: {x: 1.0072031, y: 1.0072031, z: 1.0072031}
+    - name: polySurface106
+      parentName: Bun_retopo_low
+      position: {x: 0.003600507, y: -1.2054777, z: 0.2986046}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1.0064886, y: 1.0064886, z: 1.0064886}
+    - name: polySurface107
+      parentName: Bun_retopo_low
+      position: {x: -0.004051521, y: -1.1907489, z: 0.29014167}
+      rotation: {x: 0.01322153, y: -0.05117429, z: 0.11767976, w: 0.991644}
+      scale: {x: 1.0068606, y: 1.0068606, z: 1.0068606}
+    - name: polySurface108
+      parentName: Bun_retopo_low
+      position: {x: -0.0009162667, y: -1.2163596, z: 0.29014167}
+      rotation: {x: -0.04681669, y: 0.23428726, z: -0.46230325, w: 0.8539282}
+      scale: {x: 1.003427, y: 1.003427, z: 1.003427}
+    - name: polySurface109
+      parentName: Bun_retopo_low
+      position: {x: 0.0027638935, y: -1.2066017, z: 0.2986046}
+      rotation: {x: -0.007940192, y: -0.11036387, z: 0.32070324, w: 0.9406946}
+      scale: {x: 1.0065687, y: 1.0065687, z: 1.0065687}
+    - name: polySurface112
+      parentName: Bun_retopo_low
+      position: {x: 0.006667034, y: -1.2069561, z: 0.28615814}
+      rotation: {x: -0.008662775, y: 0.22874221, z: -0.8216189, w: 0.5220578}
+      scale: {x: 1.0034033, y: 1.0034033, z: 1.0034033}
+    - name: polySurface110
+      parentName: Bun_retopo_low
+      position: {x: 0.0015711604, y: -1.2036537, z: 0.29860413}
+      rotation: {x: 0.034670204, y: 0.025491292, z: -0.40752655, w: 0.9121789}
+      scale: {x: 1.0052336, y: 1.0052336, z: 1.0052336}
+    - name: polySurface113
+      parentName: Bun_retopo_low
+      position: {x: 0.006667034, y: -1.1961552, z: 0.27875096}
+      rotation: {x: -0.07754107, y: -0.39643085, z: 0.8974118, w: 0.17743188}
+      scale: {x: 1.0069987, y: 1.0069987, z: 1.0069987}
+    - name: BodyNhead_low
+      parentName: Fullform_low
+      position: {x: -0.0010466671, y: -0.65794486, z: 0.08714729}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Ears_low
+      parentName: Fullform_low
+      position: {x: -0.0010466671, y: -0.65794486, z: 0.08714729}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: EarLeft_low
+      parentName: Ears_low
+      position: {x: -0.21268031, y: 0.98139244, z: 0.019305663}
+      rotation: {x: 0.081764825, y: -0.5028423, z: 0.071648024, w: 0.85751426}
+      scale: {x: 0.8240383, y: 0.8240383, z: 0.18940257}
+    - name: EarRight_low
+      parentName: Ears_low
+      position: {x: -1.032093, y: 0.8125977, z: 0.94159144}
+      rotation: {x: 0.081764825, y: -0.5028423, z: 0.071648024, w: 0.85751426}
+      scale: {x: 0.8240383, y: 0.8240383, z: 0.18940257}
+    - name: Hand_low
+      parentName: Fullform_low
+      position: {x: -0.0010466671, y: -0.65794486, z: 0.08714729}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Hand
+      parentName: Hand_low
+      position: {x: 0.856386, y: 0.072563, z: 0.016615257}
+      rotation: {x: 0.16900814, y: -0.6866122, z: 0.16900814, w: 0.6866122}
+      scale: {x: 1.1661736, y: 1.1661736, z: 1.1661736}
+    - name: ForearmNShoulder
+      parentName: Hand_low
+      position: {x: -0.012271087, y: 0.0004181096, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.97762114, y: 0.97762114, z: 0.97762114}
+    - name: Garter1
+      parentName: Fullform_low
+      position: {x: -0.0010466671, y: -0.65794486, z: 0.08714729}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1.0345595, y: 1.0345595, z: 1.0345595}
+    - name: Pants2
+      parentName: Fullform_low
+      position: {x: -0.0010466671, y: -0.65794486, z: 0.08714729}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pyrrha2_Reference
+      parentName: RunAnim(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pyrrha2_Hips
+      parentName: Pyrrha2_Reference
+      position: {x: -0.008724338, y: 0.53367025, z: -0.006432136}
+      rotation: {x: 0.50000006, y: -0.5, z: -0.49999994, w: 0.5}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: Pyrrha2_LeftUpLeg
+      parentName: Pyrrha2_Hips
+      position: {x: 0.011908742, y: 0.014533041, z: 0.07901595}
+      rotation: {x: -0.032850236, y: -0.004229635, z: 0.9988805, w: 0.033775464}
+      scale: {x: 1.0000007, y: 1.0000004, z: 1.0000006}
+    - name: Pyrrha2_LeftLeg
+      parentName: Pyrrha2_LeftUpLeg
+      position: {x: -0.27812642, y: -0.000070036636, z: 0.000000091999}
+      rotation: {x: 0.0037695186, y: -0.000089684414, z: -0.023970138, w: 0.9997056}
+      scale: {x: 1.0000007, y: 1.0000005, z: 1.0000008}
+    - name: Pyrrha2_LeftFoot
+      parentName: Pyrrha2_LeftLeg
+      position: {x: -0.22332247, y: 0.00000010091287, z: -0.000000042904233}
+      rotation: {x: -0.01985288, y: -0.025966102, z: 0.7082231, w: 0.7052317}
+      scale: {x: 0.99999934, y: 0.9999996, z: 0.9999998}
+    - name: Pyrrha2_LeftToeBase
+      parentName: Pyrrha2_LeftFoot
+      position: {x: -0.07462404, y: -0.00000001119986, z: 0.000000037506105}
+      rotation: {x: -0, y: -0, z: -0.000000009487848, w: 1}
+      scale: {x: 0.9999998, y: 1, z: 0.99999994}
+    - name: Pyrrha2_Spine
+      parentName: Pyrrha2_Hips
+      position: {x: -0.07600297, y: -0.0000000037727363, z: -0.000000012870922}
+      rotation: {x: -0, y: -0, z: -0, w: -1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pyrrha2_Spine1
+      parentName: Pyrrha2_Spine
+      position: {x: -0.056241956, y: -0.0000000043095114, z: -8.9900254e-10}
+      rotation: {x: 0.00000008940697, y: 0.00000008940697, z: -0, w: -1}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: Pyrrha2_Spine2
+      parentName: Pyrrha2_Spine1
+      position: {x: -0.058428768, y: -0.0000000039741277, z: -9.48417e-10}
+      rotation: {x: 0.0000000011418422, y: 0.000000058448023, z: 0.01285392, w: 0.9999174}
+      scale: {x: 1.000002, y: 1.0000048, z: 1.0000012}
+    - name: Pyrrha2_LeftShoulder
+      parentName: Pyrrha2_Spine2
+      position: {x: -0.017000033, y: 0.02844183, z: 0.050178334}
+      rotation: {x: -0.40330255, y: 0.42436448, z: 0.5673789, w: 0.57908815}
+      scale: {x: 1.0000002, y: 1.0000002, z: 0.99999994}
+    - name: Pyrrha2_LeftArm
+      parentName: Pyrrha2_LeftShoulder
+      position: {x: -0.06580221, y: -0.00000003706986, z: -0.0000000015180296}
+      rotation: {x: 0.67509663, y: 0.19330662, z: -0.21034387, w: 0.68017095}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pyrrha2_LeftForeArm
+      parentName: Pyrrha2_LeftArm
+      position: {x: -0.19079182, y: 0.000000014172532, z: -0.00000008609639}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pyrrha2_LeftHand
+      parentName: Pyrrha2_LeftForeArm
+      position: {x: -0.27074116, y: 0.00000013905596, z: -0.00000025719166}
+      rotation: {x: 0, y: -0, z: -0.0000025852808, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pyrrha2_RightShoulder
+      parentName: Pyrrha2_Spine2
+      position: {x: -0.017000036, y: 0.028441837, z: -0.04528024}
+      rotation: {x: 0.42131114, y: 0.4021839, z: -0.57982737, w: 0.56968874}
+      scale: {x: 1.0000004, y: 1.0000122, z: 1.0000114}
+    - name: Pyrrha2_RightArm
+      parentName: Pyrrha2_RightShoulder
+      position: {x: 0.085382774, y: 0.000000017659518, z: -0.000000021693776}
+      rotation: {x: -0.7042945, y: -0.12212042, z: 0.10831697, w: -0.6908859}
+      scale: {x: 1.000001, y: 1.0000002, z: 1.0000008}
+    - name: Pyrrha2_RightForeArm
+      parentName: Pyrrha2_RightArm
+      position: {x: 0.19079182, y: 0.000008345932, z: -0.0000032936932}
+      rotation: {x: -0.0002800524, y: -0.005168065, z: -0.03849412, w: 0.9992454}
+      scale: {x: 0.99999994, y: 1.0000013, z: 1.0000002}
+    - name: Pyrrha2_RightHand
+      parentName: Pyrrha2_RightForeArm
+      position: {x: 0.2707412, y: 0.000000017114402, z: 0.00000006382099}
+      rotation: {x: 0.000000056390913, y: -0.000001041556, z: 0.0000006780028, w: 1}
+      scale: {x: 0.99999994, y: 1.0000001, z: 1.0000004}
+    - name: Pyrrha2_Neck
+      parentName: Pyrrha2_Spine2
+      position: {x: -0.099130265, y: -0.000000019871026, z: -0.0000000015947063}
+      rotation: {x: -0.0000000011418422, y: -0.000000058448023, z: -0.01285392, w: 0.9999174}
+      scale: {x: 1.000002, y: 1.0000001, z: 1.0000012}
+    - name: Pyrrha2_Head
+      parentName: Pyrrha2_Neck
+      position: {x: -0.26373804, y: 0.00000014866329, z: -0.0000000042091695}
+      rotation: {x: -0, y: -0, z: -6.673842e-17, w: 1}
+      scale: {x: 0.9999998, y: 1.0000017, z: 0.9999998}
+    - name: Pyrrha2_RightUpLeg
+      parentName: Pyrrha2_Hips
+      position: {x: 0.011908779, y: 0.014533057, z: -0.09646462}
+      rotation: {x: -0.0015825483, y: 0.013140367, z: -0.027545873, w: 0.99953294}
+      scale: {x: 1.0000004, y: 1.0000004, z: 1.0000004}
+    - name: Pyrrha2_RightLeg
+      parentName: Pyrrha2_RightUpLeg
+      position: {x: 0.2774535, y: -0.000000015941147, z: -0.000000036438923}
+      rotation: {x: 0.0020324923, y: -0.00007795076, z: -0.038311705, w: 0.9992638}
+      scale: {x: 1.0000008, y: 1.0000007, z: 1.000001}
+    - name: Pyrrha2_RightFoot
+      parentName: Pyrrha2_RightLeg
+      position: {x: 0.22332275, y: 0.000000030448017, z: -0.0000000142633025}
+      rotation: {x: -0.0076836613, y: -0.010560056, z: 0.7141476, w: 0.6998733}
+      scale: {x: 1.0000006, y: 1, z: 1.0000007}
+    - name: Pyrrha2_RightToeBase
+      parentName: Pyrrha2_RightFoot
+      position: {x: 0.074624024, y: 0.000000011237043, z: -0.000000018542588}
+      rotation: {x: 0.000025409734, y: 0.000000068452195, z: 0.00000009230278, w: 1}
+      scale: {x: 1.0000007, y: 0.99999994, z: 1.0000005}
+    - name: Pyrrha2_Ctrl_Reference
+      parentName: RunAnim(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pyrrha2_Ctrl_HipsEffector
+      parentName: Pyrrha2_Ctrl_Reference
+      position: {x: 0.008773958, y: 0.48510796, z: 0.008245775}
+      rotation: {x: -0.000089305126, y: -0.008276228, z: 0.0016811589, w: 0.99996436}
+      scale: {x: 1.5041436, y: 1.5041436, z: 1.5041436}
+    - name: Pyrrha2_Ctrl_LeftAnkleEffector
+      parentName: Pyrrha2_Ctrl_Reference
+      position: {x: -0.07901597, y: 0.22147632, z: -0.3562244}
+      rotation: {x: 0.6134819, y: 0.000000006592017, z: 0.00000017369166, w: 0.7897088}
+      scale: {x: 2.0867338, y: 2.0867338, z: 2.0867338}
+    - name: Pyrrha2_Ctrl_RightAnkleEffector
+      parentName: Pyrrha2_Ctrl_Reference
+      position: {x: 0.0964647, y: 0.035593603, z: 0.22975494}
+      rotation: {x: -0.3670272, y: 0.0000012191587, z: 0.000030590043, w: 0.93021023}
+      scale: {x: 2.0867338, y: 2.0867338, z: 2.0867338}
+    - name: Pyrrha2_Ctrl_LeftWristEffector
+      parentName: Pyrrha2_Ctrl_Reference
+      position: {x: -0.5667245, y: 0.7042278, z: -0.0144318575}
+      rotation: {x: -0.000027096694, y: 0.000029400944, z: -0.00020218255, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pyrrha2_Ctrl_RightWristEffector
+      parentName: Pyrrha2_Ctrl_Reference
+      position: {x: 0.32397133, y: 0.41976768, z: 0.06269361}
+      rotation: {x: -0.18925749, y: -0.32662064, z: -0.42268497, w: 0.82391626}
+      scale: {x: 2.0280735, y: 2.0280735, z: 2.0280735}
+    - name: Pyrrha2_Ctrl_LeftKneeEffector
+      parentName: Pyrrha2_Ctrl_Reference
+      position: {x: -0.080321595, y: 0.24504942, z: -0.13415353}
+      rotation: {x: 0.6687456, y: -0.0034160458, z: 0.0008591394, w: 0.74348295}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pyrrha2_Ctrl_RightKneeEffector
+      parentName: Pyrrha2_Ctrl_Reference
+      position: {x: 0.09643294, y: 0.23724332, z: 0.13378428}
+      rotation: {x: -0.22027883, y: -0.0039271307, z: 0.00095974724, w: 0.9754286}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pyrrha2_Ctrl_LeftElbowEffector
+      parentName: Pyrrha2_Ctrl_Reference
+      position: {x: -0.2959833, y: 0.7041183, z: -0.014446559}
+      rotation: {x: -0.000027216402, y: 0.000027073813, z: -0.00020214709, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pyrrha2_Ctrl_RightElbowEffector
+      parentName: Pyrrha2_Ctrl_Reference
+      position: {x: 0.20773846, y: 0.57487077, z: -0.1263401}
+      rotation: {x: -0.18925615, y: -0.32662076, z: -0.42268416, w: 0.8239169}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pyrrha2_Ctrl_ChestOriginEffector
+      parentName: Pyrrha2_Ctrl_Reference
+      position: {x: -0.0000040284917, y: 0.5729877, z: -0.0064478293}
+      rotation: {x: -0.000027068572, y: 0.000026815022, z: -0.00020223019, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pyrrha2_Ctrl_ChestEndEffector
+      parentName: Pyrrha2_Ctrl_Reference
+      position: {x: -0.0023980306, y: 0.7053864, z: 0.021540565}
+      rotation: {x: -0.00002706857, y: 0.00002681502, z: -0.0002022302, w: 1}
+      scale: {x: 1.4888802, y: 1.4888802, z: 1.4888802}
+    - name: Pyrrha2_Ctrl_LeftFootEffector
+      parentName: Pyrrha2_Ctrl_Reference
+      position: {x: -0.079016, y: 0.14756413, z: -0.34594193}
+      rotation: {x: 0.6134819, y: -0.00000034933248, z: -0.000000102806744, w: 0.7897088}
+      scale: {x: 1.4255672, y: 1.4255672, z: 1.4255672}
+    - name: Pyrrha2_Ctrl_RightFootEffector
+      parentName: Pyrrha2_Ctrl_Reference
+      position: {x: 0.096469894, y: 0.0801576, z: 0.2896114}
+      rotation: {x: -0.3670272, y: 0.0000010173319, z: 0.00003066968, w: 0.93021023}
+      scale: {x: 1.4255672, y: 1.4255672, z: 1.4255672}
+    - name: Pyrrha2_Ctrl_LeftShoulderEffector
+      parentName: Pyrrha2_Ctrl_Reference
+      position: {x: -0.10519151, y: 0.70404136, z: -0.01445693}
+      rotation: {x: -0.00002711214, y: 0.00002682818, z: -0.00020200918, w: 1}
+      scale: {x: 1.962037, y: 1.962037, z: 1.962037}
+    - name: Pyrrha2_Ctrl_RightShoulderEffector
+      parentName: Pyrrha2_Ctrl_Reference
+      position: {x: 0.1227373, y: 0.7039492, z: -0.0144691225}
+      rotation: {x: 0.12766321, y: 0.28116938, z: -0.44516456, w: 0.8405203}
+      scale: {x: 1.962037, y: 1.962037, z: 1.962037}
+    - name: Pyrrha2_Ctrl_HeadEffector
+      parentName: Pyrrha2_Ctrl_Reference
+      position: {x: 0.0001889665, y: 1.0504937, z: -0.009021773}
+      rotation: {x: -0.000026775038, y: 0.000026814947, z: -0.00020223019, w: 1}
+      scale: {x: 2.8099856, y: 2.8099856, z: 2.8099856}
+    - name: Pyrrha2_Ctrl_LeftHipEffector
+      parentName: Pyrrha2_Ctrl_Reference
+      position: {x: -0.07895381, y: 0.48481283, z: 0.0067935316}
+      rotation: {x: 0.2625032, y: -0.004621379, z: -0.0038067529, w: 0.9649126}
+      scale: {x: 2.0867338, y: 2.0867338, z: 2.0867338}
+    - name: Pyrrha2_Ctrl_RightHipEffector
+      parentName: Pyrrha2_Ctrl_Reference
+      position: {x: 0.09650173, y: 0.4854031, z: 0.009698017}
+      rotation: {x: -0.22974762, y: -0.009870553, z: 0.0022028899, w: 0.9731977}
+      scale: {x: 2.0867338, y: 2.0867338, z: 2.0867338}
+    - name: Pyrrha2_Ctrl_Hips
+      parentName: Pyrrha2_Ctrl_Reference
+      position: {x: 0.0002513945, y: 0.4969851, z: -0.0064321402}
+      rotation: {x: -0.000089305126, y: -0.008276228, z: 0.0016811589, w: 0.99996436}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pyrrha2_Ctrl_LeftUpLeg
+      parentName: Pyrrha2_Ctrl_Hips
+      position: {x: -0.07901592, y: -0.011908759, z: 0.014533043}
+      rotation: {x: 0.2625407, y: 0.002923652, z: -0.0076017366, w: 0.96488655}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pyrrha2_Ctrl_LeftLeg
+      parentName: Pyrrha2_Ctrl_LeftUpLeg
+      position: {x: 8.881784e-18, y: -0.27812636, z: -2.220446e-18}
+      rotation: {x: 0.4501314, y: 0.0029110066, z: 0.0014654456, w: 0.8929564}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pyrrha2_Ctrl_LeftFoot
+      parentName: Pyrrha2_Ctrl_LeftLeg
+      position: {x: 8.881784e-18, y: -0.22332245, z: 0}
+      rotation: {x: -0.07200099, y: 0.002170737, z: -0.0027740276, w: 0.9973984}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pyrrha2_Ctrl_LeftToeBase
+      parentName: Pyrrha2_Ctrl_LeftFoot
+      position: {x: -0.000000047683713, y: -0.008313827, z: 0.07415942}
+      rotation: {x: 2.1692368e-30, y: -0.00000045070345, z: -1.2246467e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pyrrha2_Ctrl_RightUpLeg
+      parentName: Pyrrha2_Ctrl_Hips
+      position: {x: 0.09646462, y: -0.011908759, z: 0.014533043}
+      rotation: {x: -0.22965087, y: -0.0014297508, z: 0.0024672733, w: 0.9732689}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pyrrha2_Ctrl_RightLeg
+      parentName: Pyrrha2_Ctrl_RightUpLeg
+      position: {x: 0.000000019073486, y: -0.27745366, z: 0.0000027143954}
+      rotation: {x: 0.009728356, y: 0.0060708965, z: 0.000057287452, w: 0.99993426}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pyrrha2_Ctrl_RightFoot
+      parentName: Pyrrha2_Ctrl_RightLeg
+      position: {x: -0.000000009536743, y: -0.22332245, z: 2.220446e-18}
+      rotation: {x: -0.15310305, y: 0.0039997613, z: 0.0005787038, w: 0.988202}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pyrrha2_Ctrl_RightToeBase
+      parentName: Pyrrha2_Ctrl_RightFoot
+      position: {x: 0.0000062179565, y: -0.008313827, z: 0.07415943}
+      rotation: {x: 9.825284e-31, y: -0.00000021806113, z: -1.2246467e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pyrrha2_Ctrl_Spine
+      parentName: Pyrrha2_Ctrl_Hips
+      position: {x: -0, y: 0.07600292, z: 0}
+      rotation: {x: 0.000060608898, y: 0.008303106, z: -0.0018831554, w: 0.99996376}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pyrrha2_Ctrl_Spine1
+      parentName: Pyrrha2_Ctrl_Spine
+      position: {x: -0, y: 0.05624195, z: 0}
+      rotation: {x: 3.0616168e-17, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pyrrha2_Ctrl_Spine2
+      parentName: Pyrrha2_Ctrl_Spine1
+      position: {x: -0, y: 0.0584288, z: 0}
+      rotation: {x: -3.6429196e-17, y: 0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pyrrha2_Ctrl_LeftShoulder
+      parentName: Pyrrha2_Ctrl_Spine2
+      position: {x: -0.05017833, y: 0.017725525, z: 0.02799543}
+      rotation: {x: -0.000000028681141, y: 0.00000004294385, z: 0.000000042212214, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pyrrha2_Ctrl_LeftArm
+      parentName: Pyrrha2_Ctrl_LeftShoulder
+      position: {x: -0.05506167, y: -0.0013846587, z: -0.036003057}
+      rotation: {x: -0.000000014903485, y: -0.000000029799278, z: 0.00000017879773, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pyrrha2_Ctrl_LeftForeArm
+      parentName: Pyrrha2_Ctrl_LeftArm
+      position: {x: -0.1907917, y: 0, z: 0}
+      rotation: {x: -0.000000104307965, y: 0.0000002456147, z: -0.00000013790968, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pyrrha2_Ctrl_LeftHand
+      parentName: Pyrrha2_Ctrl_LeftForeArm
+      position: {x: -0.2707411, y: 0, z: -2.220446e-18}
+      rotation: {x: 0.00000011923855, y: 0.0000023271568, z: -0.000000035380246, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pyrrha2_Ctrl_RightShoulder
+      parentName: Pyrrha2_Ctrl_Spine2
+      position: {x: 0.045280226, y: 0.017725525, z: 0.02799543}
+      rotation: {x: -0.000000052159518, y: 0.000000014906616, z: 2.6412654e-15, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pyrrha2_Ctrl_RightArm
+      parentName: Pyrrha2_Ctrl_RightShoulder
+      position: {x: 0.077408485, y: -0.0013846587, z: -0.036003057}
+      rotation: {x: 0.12764108, y: 0.2811847, z: -0.4449835, w: 0.84061444}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pyrrha2_Ctrl_RightForeArm
+      parentName: Pyrrha2_Ctrl_RightArm
+      position: {x: 0.19079168, y: 0, z: 0}
+      rotation: {x: -0.00001170817, y: -0.644403, z: -0.000011608236, w: 0.7646861}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pyrrha2_Ctrl_RightHand
+      parentName: Pyrrha2_Ctrl_RightForeArm
+      position: {x: 0.2707411, y: 0, z: 2.220446e-18}
+      rotation: {x: -0.00000153429, y: -0.000000568929, z: -0.0000004761548, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pyrrha2_Ctrl_Neck
+      parentName: Pyrrha2_Ctrl_Spine2
+      position: {x: -0, y: 0.09909752, z: -0.0025482294}
+      rotation: {x: 0.00000029353393, y: 1.797377e-23, z: -1.797377e-23, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pyrrha2_Ctrl_Head
+      parentName: Pyrrha2_Ctrl_Neck
+      position: {x: -0, y: 0.26373795, z: 0}
+      rotation: {x: 3.0616168e-17, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -9,6 +9,8 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject pauseMenu;
 
+    public GameObject[] inventory;
+
     void Start()
     {
         Resume();
@@ -16,6 +18,13 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            SceneManager.LoadScene("testscene");
+        }
+
+        InventoryCheck();
+
         if(Input.GetButtonDown("Cancel"))
         {
             if (gamePaused)
@@ -50,5 +59,33 @@ public class PauseMenu : MonoBehaviour
     {
         print("Quitting game...");
         SceneManager.LoadScene("Start");
+    }
+
+    void InventoryCheck()
+    {
+        if(PlayerScript.gotWheel)
+        {
+            inventory[0].SetActive(true);
+        }
+        else
+        {
+            inventory[0].SetActive(false);
+        }
+        if(PlayerScript.gotEngine)
+        {
+            inventory[1].SetActive(true);
+        }
+        else
+        {
+            inventory[1].SetActive(false);
+        }
+        if(PlayerScript.gotSail)
+        {
+            inventory[2].SetActive(true);
+        }
+        else
+        {
+            inventory[2].SetActive(false);
+        }
     }
 }

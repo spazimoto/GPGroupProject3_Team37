@@ -12,15 +12,24 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Game/Menus/Controls.unity
     guid: ef04f875277565a41a35b707fc12252f
   - enabled: 1
+    path: Assets/Scenes/Main Game/Menus/Credits.unity
+    guid: 646ba6ea0d4e48a43ad7193cde2b26c2
+  - enabled: 1
+    path: Assets/Scenes/Main Game/Ezra's Market (Hub Level).unity
+    guid: 3ebb5608b32833e45a1653dcc0030cc1
+  - enabled: 1
     path: Assets/Scenes/Main Game/Ancestral Mesa (Desert Level).unity
-    guid: acef48e40465ac244bcec91eeb4ab0aa
+    guid: c26708f673c24424f83f8fdb874754f6
   - enabled: 1
-    path: Assets/Scenes/Art Demo.unity
-    guid: da0937cbeaf119a439788062763a5b18
+    path: Assets/Scenes/Main Game/Mystical Jungle.unity
+    guid: 69df44f83320b824fb4bb272ba9e725a
   - enabled: 1
-    path: Assets/Scenes/testscene.unity
-    guid: 9381a9bcd4c9db74c89c950adf4d4a75
+    path: Assets/Scenes/OasisLevel.unity
+    guid: fd0dada23ef8c964499a905bdc5eec61
   - enabled: 1
-    path: Assets/Scenes/WinPlaceholder.unity
-    guid: 9c2d706ae528806438441285c2d3082c
+    path: Assets/Scenes/Main Game/Menus/Win.unity
+    guid: e2eaf8bdd6136924d9d2331b5d82df30
+  - enabled: 1
+    path: Assets/Scenes/OasisLevel.unity
+    guid: fd0dada23ef8c964499a905bdc5eec61
   m_configObjects: {}

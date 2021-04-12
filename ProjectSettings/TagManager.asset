@@ -10,6 +10,13 @@ TagManager:
   - Hook
   - Interact
   - Sail
+  - Ground
+  - NPC
+  - Wheel
+  - Engine
+  - Checkpoint
+  - Water
+  - Taxi
   layers:
   - Default
   - TransparentFX
