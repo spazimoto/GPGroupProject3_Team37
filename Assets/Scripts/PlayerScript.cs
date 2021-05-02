@@ -35,19 +35,19 @@ public class PlayerScript : MonoBehaviour
 
     private bool inWindArea;
 
-    [SerializeField] private float cooldownTime = 20f;
-    private float nextMassChange = 0f;
-
-    public Animator anim;
-
-    Animation animation;
-
-    public GameObject turbineWind;
-    public Transform turbine;
+    public GameObject turbine;
+    public Transform turbinePosition;
 
     AudioSource SFX;
     public AudioClip jumping;
     public AudioClip shootHook;
+
+    public AudioClip lightActive;
+    public AudioClip heavyActive;
+    public AudioClip stabilize;
+    public AudioClip splash;
+    public AudioClip flipSwitch;
+
 
     public GameObject crosshair;
 
@@ -58,8 +58,17 @@ public class PlayerScript : MonoBehaviour
     public GameObject wheel;
     public GameObject sail;
     public GameObject engine;
-    
-    // this is where my public static gameobjects would go...IF I HAD ANY!!
+
+
+    private Vector3 hitNormal;
+    bool playerGrounded;
+    private float slopeLimit;
+
+    public bool waterActive;
+
+    public Text interactText;
+
+    bool isCreated = false;
 
     private enum State
     {
@@ -81,16 +90,20 @@ public class PlayerScript : MonoBehaviour
 
     private void Start()
     {
-        speed = 50f;
+        speed = 20f;
         gravity = -100f;
 
         lightMass = false;
         normalMass = true;
         heavyMass = false;
 
-        anim.SetTrigger("isAlive");
-
         ObjectiveClear();
+
+        slopeLimit = controller.slopeLimit;
+
+        waterActive = false;
+
+        interactText.text = "";
     }
 
     void Update()
@@ -99,6 +112,10 @@ public class PlayerScript : MonoBehaviour
         {
             SceneManager.LoadScene("Win");
         }
+        
+        ChangeMass();
+        SoundControl();
+        DebugControl();
 
         switch(state)
         {
@@ -118,9 +135,27 @@ public class PlayerScript : MonoBehaviour
                 MouseLook();
                 break;
         }
+    }
 
-        ChangeMass();
-        AnimationControl();
+    void DebugControl()
+    {
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            SceneManager.LoadScene("Ezra's Market (Hub Level)");
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            SceneManager.LoadScene("Ancestral Mesa (Desert Level)");
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            SceneManager.LoadScene("Mystical Jungle");
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            print("loading oasis level...");
+            SceneManager.LoadScene("OasisLevel");
+        }
     }
 
     void MouseLook()
@@ -147,6 +182,21 @@ public class PlayerScript : MonoBehaviour
         float zMovement = Input.GetAxisRaw("Vertical");
 
         Vector3 playerVelocity = transform.right * hMovement * speed + transform.forward * zMovement * speed;
+
+        if(!playerGrounded)
+        {
+            playerVelocity.x += (1f - hitNormal.y) * hitNormal.x * (speed * 1.2f);
+            playerVelocity.z += (1f - hitNormal.y) * hitNormal.z * (speed * 1.2f);
+        }
+
+        if(!(Vector3.Angle(Vector3.up, hitNormal) <= slopeLimit))
+        {
+            playerGrounded = false;
+        }
+        else
+        {
+            playerGrounded = controller.isGrounded;
+        }
 
         if (controller.isGrounded)
         {
@@ -183,12 +233,30 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        hitNormal = hit.normal;
+    }
     void OnTriggerEnter(Collider collider)
     {
+
         if(collider.gameObject.CompareTag("Damage"))
         {
             print("Yowch!");
             Knockback();
+        }
+
+        if(collider.gameObject.CompareTag("Speedrun"))
+        {
+            waterActive = true;
+        }
+
+        if(collider.gameObject.CompareTag("Water"))
+        {
+            SFXControl(splash);
+
+            Scene scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.name);
         }
 
         if(collider.gameObject.CompareTag("Wheel"))
@@ -234,15 +302,35 @@ public class PlayerScript : MonoBehaviour
 
     void OnTriggerExit(Collider collider)
     {
-        //print ("Phew! That was close!");
         inWindArea = false;
     }
 
     void ChangeMass()
     {
-        if (Time.time > nextMassChange)
+        if(Input.GetKey(KeyCode.Q) || Input.GetButton("Light"))
         {
-            //print ("Your mass is now set to normal.");
+            lightMass = true;
+
+            normalMass = false;
+            heavyMass = false;
+
+            speed = 30f;
+            gravity = -60f;
+        }
+
+        else if(Input.GetKey(KeyCode.E) || Input.GetButton("Heavy"))
+        {
+            heavyMass = true;
+
+            lightMass = false;
+            normalMass = false;
+
+            speed = 10f; 
+            gravity = -120f;
+        }
+
+        else
+        {
             normalMass = true;
 
             lightMass = false;
@@ -250,33 +338,6 @@ public class PlayerScript : MonoBehaviour
 
             speed = 20f;
             gravity = -100f;
-
-            if(Input.GetKeyDown(KeyCode.Q) || Input.GetButtonDown("Light"))
-            {
-                print("Your mass is now set to light.");
-                lightMass = true;
-
-                normalMass = false;
-                heavyMass = false;
-
-                speed = 30f;
-                gravity = -60f;
-
-                Cooldown();
-            }
-
-            if(Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Heavy"))
-            {
-                print("Your mass is now set to heavy.");
-                heavyMass = true;
-
-                lightMass = false;
-                normalMass = false;
-
-                speed = 10f; 
-                gravity = -120f;
-                Cooldown();
-            }
         }
     }
 
@@ -303,11 +364,28 @@ public class PlayerScript : MonoBehaviour
                     state = State.HookshotThrown;
                 }
             }
+
+            if(raycastHit.collider.tag == "Switch")
+            {
+                if (!isCreated)
+                {
+                    crosshair.GetComponent <Image>().color = Color.red;
+                    interactText.text = "Press X or left click to interact!";
+                    if (HookshotInput() || Input.GetButtonDown("Interact"))
+                    {
+                        SFXControl(flipSwitch);
+                        Instantiate(turbine, turbinePosition);
+
+                        isCreated = true;
+                    }
+                }
+            }
             
         }
         else
         {
             crosshair.GetComponent<Image>().color = Color.white;
+            interactText.text = "";
         }
     }
 
@@ -384,11 +462,6 @@ public class PlayerScript : MonoBehaviour
         return Input.GetButton("Jump");
     }
 
-    void Cooldown()
-    {
-        nextMassChange = Time.time + cooldownTime;
-    }
-
     public void Knockback()
     {
         knockbackCounter = knockbackTime;
@@ -396,34 +469,6 @@ public class PlayerScript : MonoBehaviour
 
         controller.Move(impactDirection * knockbackForce);
         //transform.Translate(Vector3.back, Space.Self);
-    }
-
-    void AnimationControl()
-    {
-        if(!PauseMenu.gamePaused)
-        {
-            if(Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
-            {
-                anim.SetBool("isWalking", true);
-                anim.SetBool("isAlive", false);
-            }
-            else
-            {
-                anim.SetBool("isWalking", false);
-            }
-
-            if (controller.isGrounded)
-            {
-                anim.SetBool("isJumping", false);
-                print("I'm walking...on the GROUND!");
-            }
-            else
-            {
-                anim.SetBool("isJumping", true);
-                anim.SetBool("isWalking", false);
-                print("Whoa! Where's the ground?!");
-            }
-        }
     }
 
     public void SFXControl(AudioClip audio)
@@ -449,6 +494,24 @@ public class PlayerScript : MonoBehaviour
         if(gotSail)
         {
             Destroy(sail);
+        }
+    }
+
+    void SoundControl()
+    {
+        if(Input.GetKeyDown(KeyCode.Q) || Input.GetButtonDown("Light"))
+        {
+            SFXControl(lightActive);
+        }
+
+        else if(Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Heavy"))
+        {
+            SFXControl(heavyActive);
+        }
+
+        if (Input.GetKeyUp(KeyCode.Q) || Input.GetButtonUp("Light") || Input.GetKeyUp(KeyCode.E) || Input.GetButtonUp("Heavy"))
+        {
+            SFXControl(stabilize);
         }
     }
 }

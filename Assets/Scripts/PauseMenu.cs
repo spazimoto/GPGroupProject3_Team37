@@ -9,6 +9,8 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject pauseMenu;
 
+    public GameObject controlsMenu;
+
     public GameObject[] inventory;
 
     void Start()
@@ -49,10 +51,23 @@ public class PauseMenu : MonoBehaviour
     public void Resume()
     {
         pauseMenu.SetActive(false);
+        controlsMenu.SetActive(false);
         Time.timeScale = 1f;
         gamePaused = false;
 
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void Controls()
+    {
+        controlsMenu.SetActive(true);
+        pauseMenu.SetActive(false);
+    }
+
+    public void Back()
+    {
+        controlsMenu.SetActive(false);
+        pauseMenu.SetActive(true);
     }
 
     public void Quit()

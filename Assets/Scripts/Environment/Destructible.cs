@@ -6,21 +6,21 @@ public class Destructible : MonoBehaviour
 {
     public GameObject destroyedVersion;
 
-    public GameObject player;
-
     void OnTriggerEnter(Collider collider)
     {
+        GameObject player = GameObject.Find("Player");
         PlayerScript playerScript = player.GetComponent<PlayerScript>();
 
         if (collider.gameObject.CompareTag("Player"))
         {
-            if(playerScript.heavyMass)
+            
+            if (playerScript.heavyMass)
             {
                 print("I come in pieces!");
                 Instantiate(destroyedVersion, transform.position, transform.rotation);
                 Destroy(gameObject);
             }
-            
+
         }
     }
 }

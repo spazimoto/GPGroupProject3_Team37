@@ -5,71 +5,62 @@ using UnityEngine.UI;
 public class DialogueSystem : MonoBehaviour
 {
     PlayerScript player;
-    public Text nameText;
+
     public Text dialogueText;
     public GameObject dialogueBox;
 
-    private Queue<string> sentences; //FIFO-- first in, first out
+    public int index;
+
+    public Text nameText;
+    public string npcName;
+    [TextArea(3, 10)]
+    public string[] sentences;
+
+    public bool continueDialogue = true;
 
     void Start()
     {
-        sentences = new Queue<string>();
-
         dialogueBox.gameObject.SetActive(false);
 
         player = GameObject.Find("Player").GetComponent<PlayerScript>();
     }
 
-    public void StartDialogue(Dialogue dialogue)
-    {
-        dialogueBox.gameObject.SetActive(true);
-        
-        player.enabled = false;
-
-        nameText.text = dialogue.name;
-
-        sentences.Clear();
-
-        foreach(string sentence in dialogue.sentences)
-        {
-            sentences.Enqueue(sentence);
-        }
-
-        DisplayNextSentence();
-    }
 
     public void DisplayNextSentence()
     {
-        if(sentences.Count == 0)
-        {
-            EndDialogue();
-            return;
-        }
+        GameObject playerAnim = GameObject.Find("PyrrhaTextures");
+        AnimationEvents animationEvent = playerAnim.GetComponent<AnimationEvents>();
 
-        string sentence = sentences.Dequeue();
-        StopAllCoroutines();
-        StartCoroutine(TypeSentence(sentence));
+        if(index < sentences.Length - 1)
+        {
+            animationEvent.respawned = false;
+
+            dialogueBox.gameObject.SetActive(true);
+            index++;
+            nameText.text = npcName;
+            dialogueText.text = "";
+            StartCoroutine(TypeSentence());
+        }
+        else
+        {
+            animationEvent.respawned = true;
+
+            index = 0;
+            dialogueBox.gameObject.SetActive(false);
+        }
     }
 
     
-    IEnumerator TypeSentence(string sentence)
+    IEnumerator TypeSentence()
     {
-        dialogueText.text = "";
-        foreach(char letter in sentence.ToCharArray())
+        continueDialogue = true;
+        foreach(char letter in sentences[index].ToCharArray())
         {
             dialogueText.text += letter;
+            continueDialogue = false;
             yield return new WaitForSeconds(0.01f);
         }
+        continueDialogue = true;
     }
 
-
-    void EndDialogue()
-    {
-
-        player.enabled = true;
-
-        dialogueBox.gameObject.SetActive(false);
-
-        Debug.Log("End of conversation.");
-    }
 }

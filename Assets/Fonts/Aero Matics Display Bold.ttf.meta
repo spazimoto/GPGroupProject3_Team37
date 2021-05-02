@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 36153df5f155d224dbc95080bc22df97
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Aero Matics Display
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 15f34cf407c00174283f144a5264fdb8, type: 3}
+  - {fileID: 12800000, guid: 13e5b40b67beb6c4f834485f7e62ad2a, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

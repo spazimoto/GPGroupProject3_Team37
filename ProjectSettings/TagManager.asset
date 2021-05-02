@@ -17,6 +17,9 @@ TagManager:
   - Checkpoint
   - Water
   - Taxi
+  - Speedrun
+  - Platform
+  - Switch
   layers:
   - Default
   - TransparentFX

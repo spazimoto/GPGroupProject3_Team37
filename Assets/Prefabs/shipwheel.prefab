@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4007044887844606558}
   - component: {fileID: 2930110725902310482}
   - component: {fileID: 5677133721072729931}
+  - component: {fileID: 6326153186756297961}
   m_Layer: 0
   m_Name: pSphere10
   m_TagString: Wheel
@@ -26,8 +27,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 527307320769029644}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4572098458035736186}
@@ -96,6 +97,22 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -7487567997603328355, guid: 1da6303e75a02314fa32b170a7689a8c, type: 3}
+--- !u!111 &6326153186756297961
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527307320769029644}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 847af9d230fc39a41b9f00fcc7f179f4, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 847af9d230fc39a41b9f00fcc7f179f4, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &3762911413046383808
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,11 +136,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3762911413046383808}
-  m_LocalRotation: {x: 0.1890026, y: -0.04815614, z: -0.49094576, w: 0.84907675}
-  m_LocalPosition: {x: 34.6, y: 8.8, z: -1}
-  m_LocalScale: {x: 0.6374525, y: 0.6374525, z: 0.63745254}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1332437803809476593}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 15.883, y: -16.139, z: -62.34}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}

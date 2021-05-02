@@ -9,9 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6373653690501838902}
+  - component: {fileID: 651601803134255154}
   m_Layer: 0
   m_Name: crankshaft
-  m_TagString: Untagged
+  m_TagString: Engine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23,14 +24,30 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5996565923610780300}
-  m_LocalRotation: {x: -0, y: -0.469726, z: -0, w: 0.88281226}
-  m_LocalPosition: {x: 13.6, y: 0, z: 70}
-  m_LocalScale: {x: 3.647719, y: 3.6477191, z: 3.647719}
+  m_LocalRotation: {x: 0, y: -0.46972588, z: 0, w: 0.8828124}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8525651893021689346}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -56.033, z: 0}
+--- !u!111 &651601803134255154
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5996565923610780300}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 506624100043f464fb96fd2178eb3ca7, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 506624100043f464fb96fd2178eb3ca7, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &8095880189455842855
 GameObject:
   m_ObjectHideFlags: 0
@@ -44,7 +61,7 @@ GameObject:
   - component: {fileID: 6333378718319094648}
   m_Layer: 0
   m_Name: pCylinder15
-  m_TagString: Untagged
+  m_TagString: Engine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57,7 +74,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8095880189455842855}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: -0.47, z: 0}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6373653690501838902}

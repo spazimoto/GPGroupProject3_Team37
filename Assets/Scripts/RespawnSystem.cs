@@ -26,38 +26,58 @@ public class RespawnSystem : MonoBehaviour
     public AudioClip falling;
     public AudioClip hit;
 
-    public float FlashingTime = .6f;
-    public float TimeInterval = .1f;
+    public AudioClip death;
+    public AudioClip revive;
+
+    float scaleX = 0.5f;
+    float scaleY = 0.5f;
+    float scaleZ = 0.5f;
 
     void Start()
     {
+        PlayerScript playerScript = GetComponent<PlayerScript>();
+        AnimationController animController = GetComponent<AnimationController>();
+
         life = hearts.Length;
         dead = false;
-
         spawnPoint = transform.position;
+
+        playerScript.SFXControl(revive);
+        animController.anim.SetTrigger("isAlive");
     }
 
     void Update()
     {
-        print ("I have " + life + " lives.");
 
         PlayerScript playerScript = GetComponent<PlayerScript>();
+        AnimationController animController = GetComponent<AnimationController>();
 
-        if(transform.position.y < minDeathHeight)
+        GameObject playerAnim = GameObject.Find("PyrrhaTextures");
+        AnimationEvents animationEvent = playerAnim.GetComponent<AnimationEvents>();
+
+        if (!animationEvent.respawned)
         {
-            //falling sound goes here?
+            playerScript.enabled = false;
+        }
+        else
+        {
+            playerScript.enabled = true;
+        }
 
+        if (transform.position.y < minDeathHeight)
+        {
             if (transform.position.y < maxDeathHeight)
             {
                 playerScript.controller.enabled = false;
                 transform.position = spawnPoint;
                 playerScript.SFXControl(hit);
 
-                if (Time.time > timeInvincible)
+                TakeDamage();
+                /*if (Time.time > timeInvincible)
                 {
                     TakeDamage();
                     Cooldown();
-                }
+                }*/
             }
         }
         else
@@ -67,24 +87,25 @@ public class RespawnSystem : MonoBehaviour
 
         if (dead == true)
         {
-            playerScript.anim.SetBool("isDead", true);
-            playerScript.controller.enabled = false;
+            animController.anim.SetBool("isDead", true);
+            playerScript.enabled = false;
+
+
+            //playerScript.SFXControl(death);
         }
 
-        print(spawnPoint);
     }
 
     void OnTriggerEnter(Collider collider)
     {
-        if(collider.gameObject.CompareTag("Checkpoint"))
+        if (collider.gameObject.CompareTag("Checkpoint"))
         {
             spawnPoint = collider.gameObject.GetComponent<Transform>().position;
 
             Destroy(collider.gameObject);
         }
     }
-
-        void Cooldown()
+    void Cooldown()
     {
         timeInvincible = Time.time + cooldown;
     }
@@ -93,8 +114,13 @@ public class RespawnSystem : MonoBehaviour
     {
         if (life >= 1)
         {
+            AnimationController animController = GetComponent<AnimationController>();
+
+            animController.anim.SetTrigger("isHurt");
             life -= 1;
-            Destroy(hearts[life].gameObject);
+            hearts[life].GetComponent<RectTransform>().localScale = new Vector3(scaleX, scaleY, scaleZ);
+            hearts[life].GetComponent<Image>().color = Color.grey;
+            Destroy(hearts[life].GetComponent<Animation>());
 
             if (life < 1)
             {

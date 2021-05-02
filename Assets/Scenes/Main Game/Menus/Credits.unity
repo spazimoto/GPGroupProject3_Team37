@@ -256,7 +256,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -90, y: 685}
+  m_AnchoredPosition: {x: -45, y: 1200}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1046872220
@@ -280,13 +280,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 15f34cf407c00174283f144a5264fdb8, type: 3}
     m_FontSize: 60
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 60
-    m_Alignment: 0
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 1
@@ -338,7 +338,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -84, y: -1180}
+  m_AnchoredPosition: {x: -84, y: -2500}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1091050099
@@ -510,7 +510,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 73181ac816ef3724cbd798711dfdbd0b, type: 3}
     m_FontSize: 36
     m_FontStyle: 0
     m_BestFit: 0
@@ -551,7 +551,23 @@ MonoBehaviour:
 
 
 
+    p0ss
+
+
+
+    bart
+
+
+
     CtrlHit
+
+
+
+    yd
+
+
+
+    Concongames
 
 
 
@@ -560,7 +576,24 @@ MonoBehaviour:
 
 
 
-    Memoraphile @ You''re Perfect Studio'
+    Zute
+
+
+
+    erxer1
+
+
+
+    Blender Foundation
+
+
+
+    bart
+
+
+
+    Memoraphile
+    @ You''re Perfect Studio'
 --- !u!222 &1480458127
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -603,7 +636,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 62, y: -1087}
+  m_AnchoredPosition: {x: 62, y: -1500}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1638893748
@@ -627,7 +660,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 73181ac816ef3724cbd798711dfdbd0b, type: 3}
     m_FontSize: 36
     m_FontStyle: 0
     m_BestFit: 0
@@ -868,7 +901,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 73181ac816ef3724cbd798711dfdbd0b, type: 3}
     m_FontSize: 36
     m_FontStyle: 1
     m_BestFit: 0
@@ -910,16 +943,50 @@ MonoBehaviour:
 
 
 
-    Main Menu & Hub Music
+    Mass Changing SFX
 
 
 
-    Heavenly Oasis Theme
+    Hookshot Release SFX
 
 
 
-    Game Competion
-    Theme'
+    Main Menu
+    & Hub Music
+
+
+
+    Ancestral Mesa Theme
+
+
+
+    Factory Jungle Theme
+
+
+
+    Heavenly
+    Oasis Theme
+
+
+
+    Footstep SFX
+
+
+
+    Water SFX
+
+
+
+    Water Splash SFX
+
+
+
+    Ambient
+    Engine SFX
+
+
+
+    Game Completion Theme'
 --- !u!222 &1755054731
 CanvasRenderer:
   m_ObjectHideFlags: 0
